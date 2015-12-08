@@ -65,13 +65,28 @@ public class MainActivity extends Activity {
         Button showBtn = (Button) findViewById(R.id.showBtn);
         showBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), ("Red = " + raceTime1
-                        + "\nGreen = " + raceTime2
-                        + "\nPurple = " + raceTime3
-                        + "\nOrange = " + raceTime4), Toast.LENGTH_LONG).show();
+           public void onClick(View v) {
+                endrace = true;
+                Toast.makeText(getApplicationContext(), checkWinner(endrace, raceTime1, raceTime2, raceTime3, raceTime4),
+                        Toast.LENGTH_LONG).show();
             }
         });
+
+    }
+
+    private String checkWinner(boolean end, double car1, double car2, double car3, double car4) {
+        if (end == true) {
+            if (car1 < car2 && car1 < car3 && car1 < car4)
+                return "Car #88 Won the race with a time of: " + Double.toString(car1);
+            else if (car2 < car1 && car2 < car3 && car2 < car4)
+                return "Car #78 Won the race with a time of: " + Double.toString(car2);
+            else if (car3 < car1 && car3 < car2 && car3 < car4)
+                return "Car #45 Won the race with a time of: " + Double.toString(car3);
+            else
+                return "Car #23 Won the race with a time of: " + Double.toString(car4);
+        } else {
+            return "Race is not over yet!";
+        }
     }
 }
 
