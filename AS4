@@ -40,14 +40,26 @@ public class MainActivity extends Activity {
 
         a_button = (Button) findViewById(R.id.button1);
         final Animation animationScale1 = AnimationUtils.loadAnimation(this, R.anim.translateset1);
-        animationScale1.setDuration((long)time2);
+        animationScale1.setDuration((long)time1);
         a_button.startAnimation(animationScale1);
 
         green = (Button) findViewById(R.id.greenBtn);
         final Animation animationScale2 = AnimationUtils.loadAnimation(this, R.anim.translateset2);
         //animationScale = AnimationUtils.loadAnimation(this, R.anim.translateset2);
+
         animationScale2.setDuration((long)time2);
         green.startAnimation(animationScale2);
+
+        purple = (Button) findViewById(R.id.purpleBtn);
+        final Animation animationScale3 = AnimationUtils.loadAnimation(this, R.anim.translateset1);
+        animationScale3.setDuration((long)time3);
+        purple.startAnimation(animationScale3);
+
+        orange = (Button) findViewById(R.id.OrangeBtn);
+        final Animation animationScale4 = AnimationUtils.loadAnimation(this, R.anim.translateset2);
+        //animationScale = AnimationUtils.loadAnimation(this, R.anim.translateset2);
+        animationScale4.setDuration((long)time4);
+        orange.startAnimation(animationScale4);
 
 
         Button showBtn = (Button) findViewById(R.id.showBtn);
@@ -55,13 +67,14 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), ("Red = " + raceTime1
-                        + "Green = " + raceTime2
-                        + "Purple = " + raceTime3
-                        + "Orange = " + raceTime4), Toast.LENGTH_LONG).show();
+                        + "\nGreen = " + raceTime2
+                        + "\nPurple = " + raceTime3
+                        + "\nOrange = " + raceTime4), Toast.LENGTH_LONG).show();
             }
         });
     }
 }
+
 
 
 //*************************************** END **********************************************************//
@@ -69,26 +82,30 @@ public class MainActivity extends Activity {
 //*********************************** ANIM TRANSLATE1 *****************************************//
 <?xml version="1.0" encoding="utf-8"?>
 <set xmlns:android="http://schemas.android.com/apk/res/android"
-    android:interpolator="@android:anim/linear_interpolator">
+    android:interpolator="@android:anim/linear_interpolator"
+    android:fillAfter="true">
+
     <translate
-        android:fromXDelta="0"
-        android:fromYDelta="100"
-        android:toXDelta="200"
-        android:toYDelta="100"
-        android:fillAfter="true"/>
+        android:fromXDelta="0%"
+        android:fromYDelta="0%"
+        android:toXDelta="100.0%p"
+        android:toYDelta="0%"
+        />
 </set>
 //********************************************* END **************************************//
 
 //*********************************** ANIM TRANSLATE2 *****************************************//
 <?xml version="1.0" encoding="utf-8"?>
 <set xmlns:android="http://schemas.android.com/apk/res/android"
-    android:interpolator="@android:anim/linear_interpolator">
+    android:interpolator="@android:anim/linear_interpolator"
+    android:fillAfter="true">
+
     <translate
-        android:fromXDelta="0"
-        android:fromYDelta="100"
-        android:toXDelta="200"
-        android:toYDelta="100"
-        android:fillAfter="true"/>
+        android:fromXDelta="0%"
+        android:fromYDelta="0%"
+        android:toXDelta="100.0%p"
+        android:toYDelta="0%"
+        />
 </set>
 //********************************************* END **************************************//
 
