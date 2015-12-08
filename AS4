@@ -14,52 +14,110 @@ import android.widget.Button;
 import android.view.animation.TranslateAnimation;
 import android.view.animation.AnimationSet;
 import android.widget.Toast;
-
 public class MainActivity extends Activity {
+
+    double time1 = 0;
+    double raceTime1 = time1/1000;
+
+    double time2  = 0;
+    double raceTime2 = time2/1000;
+
+    double time3 = 0;
+    double raceTime3 = time3/1000;
+
+    double time4  = 0;
+    double raceTime4 = time4/1000;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button a_button = (Button) findViewById(R.id.button1);
-        Button green = (Button) findViewById(R.id.greenBtn);
-        Button purple = (Button) findViewById(R.id.purpleBtn);
-        Button orange = (Button) findViewById(R.id.OrangeBtn);
 
-        //AnimationSet animationSet = new AnimationSet(true);
-        double time1  = ((Math.random() * 5000) + 5000);
-        final double raceTime1 = time1/1000;
+        Button start = (Button) findViewById(R.id.start);
+        start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //AnimationSet animationSet = new AnimationSet(true);
 
-        double time2  = ((Math.random() * 5000) + 5000);
-        final double raceTime2 = time2/1000;
+                 time1  = ((Math.random() * 5000) + 5000);
+                 raceTime1 = time1/1000;
 
-        double time3 = ((Math.random() * 5000) + 5000);
-        final double raceTime3 = time3/1000;
+                 time2  = ((Math.random() * 5000) + 5000);
+                 raceTime2 = time2/1000;
 
-        double time4  = ((Math.random() * 5000) + 5000);
-        final double raceTime4 = time4/1000;
+                 time3 = ((Math.random() * 5000) + 5000);
+                 raceTime3 = time3/1000;
 
-        a_button = (Button) findViewById(R.id.button1);
-        final Animation animationScale1 = AnimationUtils.loadAnimation(this, R.anim.translateset1);
-        animationScale1.setDuration((long)time1);
-        a_button.startAnimation(animationScale1);
+                 time4  = ((Math.random() * 5000) + 5000);
+                 raceTime4 = time4/1000;
 
-        green = (Button) findViewById(R.id.greenBtn);
-        final Animation animationScale2 = AnimationUtils.loadAnimation(this, R.anim.translateset2);
-        //animationScale = AnimationUtils.loadAnimation(this, R.anim.translateset2);
 
-        animationScale2.setDuration((long)time2);
-        green.startAnimation(animationScale2);
+                Button a_button = (Button) findViewById(R.id.button1);
+                final Animation animationScale1 = AnimationUtils.loadAnimation(MainActivity.this, R.anim.translateset1);
+                animationScale1.setDuration((long) time1);
+                animationScale1.setStartOffset(600);
+                a_button.startAnimation(animationScale1);
 
-        purple = (Button) findViewById(R.id.purpleBtn);
-        final Animation animationScale3 = AnimationUtils.loadAnimation(this, R.anim.translateset1);
-        animationScale3.setDuration((long)time3);
-        purple.startAnimation(animationScale3);
+                Button green = (Button) findViewById(R.id.greenBtn);
+                final Animation animationScale2 = AnimationUtils.loadAnimation(MainActivity.this, R.anim.translateset1);
+                //animationScale = AnimationUtils.loadAnimation(this, R.anim.translateset2);
+                animationScale2.setStartOffset(600);
+                animationScale2.setDuration((long) time2);
+                green.startAnimation(animationScale2);
 
-        orange = (Button) findViewById(R.id.OrangeBtn);
-        final Animation animationScale4 = AnimationUtils.loadAnimation(this, R.anim.translateset2);
-        //animationScale = AnimationUtils.loadAnimation(this, R.anim.translateset2);
-        animationScale4.setDuration((long)time4);
-        orange.startAnimation(animationScale4);
+                Button orange = (Button) findViewById(R.id.OrangeBtn);
+                final Animation animationScale3 = AnimationUtils.loadAnimation(MainActivity.this, R.anim.translateset2);
+                animationScale3.setStartOffset(600);
+                animationScale3.setDuration((long) time3);
+                orange.startAnimation(animationScale3);
+
+                Button purple = (Button) findViewById(R.id.purpleBtn);
+                final Animation animationScale4 = AnimationUtils.loadAnimation(MainActivity.this, R.anim.translateset2);
+                animationScale4.setStartOffset(600);
+                animationScale4.setDuration((long)time4);
+                purple.startAnimation(animationScale4);
+
+            }
+        });
+
+        Button reset = (Button) findViewById(R.id.reset);
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Button red = (Button) findViewById(R.id.button1);
+                Button green = (Button) findViewById(R.id.greenBtn);
+                Button orange = (Button) findViewById(R.id.OrangeBtn);
+                Button purple = (Button) findViewById(R.id.purpleBtn);
+                final Animation animationReset = AnimationUtils.loadAnimation(MainActivity.this, R.anim.translatereset2);
+                red.startAnimation(animationReset);
+                green.startAnimation(animationReset);
+                orange.startAnimation(animationReset);
+                purple.startAnimation(animationReset);
+            }
+        });
+
+        Button exit = (Button) findViewById(R.id.exit);
+        exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.exit(0);
+            }
+        });
+
+
+
+        Button showBtn = (Button) findViewById(R.id.showBtn);
+        showBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), ("Red = " + raceTime1
+                        + "\nGreen = " + raceTime2
+                        + "\nOrange = " + raceTime3
+                        + "\npurple = " + raceTime4), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+}
 
 
         Button showBtn = (Button) findViewById(R.id.showBtn);
